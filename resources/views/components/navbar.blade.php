@@ -1,41 +1,26 @@
 <header
-    class="flex top-0 justify-between items-center py-4 px-32 bg-white z-50 bg-gradient-to-r from-cream to-gray-100 w-full fixed">
+    class="flex top-0 justify-between items-center py-4 px-32 bg-white z-50 bg-gradient-to-r from-cream to-gray-100 w-full fixed ">
     {{-- logo --}}
     <div class="text-2xl text-slate-700">
         <img src="{{ asset('images/logo1.png') }}" alt="" class="w-[140px]">
     </div>
 
-    {{-- search --}}
-    <div class="w-72">
-        <form class="w-full mx-auto invisible">
-            <label for="default-search"
-                class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
-            <div class="relative">
-                <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                    </svg>
-                </div>
-                <input type="search" id="default-search"
-                    class="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="Search..." required />
-            </div>
-        </form>
-    </div>
+
 
     {{-- menu --}}
-    <nav class="space-x-5 text-sm font-bold">
+    <nav class="space-x-5 text-sm font-bold ">
         <a href="/"
             class="text-gray-900 hover:text-white hover:bg-gray-900 {{ Request::is('/') ? 'bg-gray-900 text-white' : '' }} px-4 py-2 rounded">Home</a>
         <a href="/shop"
             class="text-gray-900 hover:text-white hover:bg-gray-900 {{ Request::is('shop') ? 'bg-gray-900 text-white' : '' }} px-4 py-2 rounded">Shop</a>
         <a href="/kategori"
             class="text-gray-900 hover:text-white hover:bg-gray-900 {{ Request::is('kategori') ? 'bg-gray-900 text-white' : '' }} px-4 py-2 rounded">Categori</a>
+
         <a href="/about"
             class="text-gray-900 hover:text-white hover:bg-gray-900 {{ Request::is('about') ? 'bg-gray-900 text-white' : '' }} px-4 py-2 rounded">About
             Us</a>
+        <a href="/dashboard/products/filter"
+            class="text-gray-900 hover:text-white hover:bg-gray-900 {{ Request::is('/dashboard/products/filter') ? 'bg-gray-900 text-white' : '' }} px-4 py-2 rounded">Dashboard</a>
     </nav>
 
 
@@ -148,10 +133,9 @@
 
                                 <div class="cursor-pointer flex items-center justify-between py-3">
                                     <div class="flex items-center space-x-3 text-red-600">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-0.5 -0.5 16 16"
-                                            fill="none" stroke="#dc2626" stroke-linecap="round"
-                                            stroke-linejoin="round" id="Logout-2--Streamline-Tabler" height="16"
-                                            width="16">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-0.5 -0.5 16 16" fill="none"
+                                            stroke="#dc2626" stroke-linecap="round" stroke-linejoin="round"
+                                            id="Logout-2--Streamline-Tabler" height="16" width="16">
                                             <desc>Logout 2 Streamline Icon: https://streamlinehq.com</desc>
                                             <path
                                                 d="M6.25 5V3.75a1.25 1.25 0 0 1 1.25 -1.25h4.375a1.25 1.25 0 0 1 1.25 1.25v7.5a1.25 1.25 0 0 1 -1.25 1.25h-4.375a1.25 1.25 0 0 1 -1.25 -1.25v-1.25"

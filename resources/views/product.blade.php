@@ -8,15 +8,15 @@
             <div class="flex">
                 <!-- Product Image -->
                 <div class="w-1/2 flex justify-center relative h-[80vh]">
-                    <img src="{{ Str::startsWith($product->path_img_222290, 'http') ? $product->path_img_222290 : asset('storage/images/' . $product->path_img_222290) }}"
+                    <img src="https://images.unsplash.com/photo-1623607915241-a3151d59a9c8?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                         alt="Product Image" class="object-cover h-full">
                 </div>
 
                 <!-- Product Details -->
                 <div class="w-1/2 flex flex-col p-2 justify-between px-6">
                     <div class="text-start mt-2">
-                        <h1 class="text-4xl font-bold">{{ $product->nama_222290 }}</h1>
-                        <p class="text-xl text-gray-900 font-light mt-2">Product Categories</p>
+                        <h1 class="text-4xl font-bold">Produk Dummy</h1>
+                        <p class="text-xl text-gray-900 font-light mt-2">Kategori Dummy</p>
                         <div class="h-0.5 w-full bg-slate-900 mt-3"></div>
                     </div>
 
@@ -24,7 +24,7 @@
                     <div>
                         <div class="mt-6 text-base">
                             <p class="text-xl text-gray-900 font-light">Description</p>
-                            <p class="text-lg">{{ $product->deskripsi_222290 }}</p>
+                            <p class="text-lg">Ini adalah deskripsi produk dummy.</p>
                         </div>
 
                         <div class="flex items-center space-x-4">
@@ -34,14 +34,14 @@
                         </div>
                         <div class="mt-6 text-base">
                             <p class="text-xl text-gray-900 font-light">Jumlah</p>
-                            <p class="text-lg font-bold">{{ $product->jumlah_222290 }} Barang</p>
+                            <p class="text-lg font-bold">10 Barang</p>
                         </div>
                     </div>
 
                     <!-- Price -->
                     <div>
-                        <div class="mt-6 text-start">
-                            <p class="text-5xl font-bold">Rp {{ number_format($product->harga_222290, 0, ',', '.') }}</p>
+                        <div class="mt-3 text-start mb-6">
+                            <p class="text-5xl font-bold">Rp 100.000</p>
                         </div>
 
                         <!-- Add to Cart Button -->
@@ -79,19 +79,19 @@
                 <div class="my-4">
                     <strong>Nama Bank: BCA</strong><br>
                     <strong>No. Rekening: 1234567890</strong><br>
-                    <strong>Nama Pemilik Rekening: PT. MaskGlow</strong>
+                    <strong>Nama Pemilik Rekening: PT. Dummy</strong>
                 </div>
 
                 <div class="border-t my-4 py-2">
                     <h3 class="font-semibold">Barang yang Dibeli:</h3>
                     <ul class="list-disc list-inside">
-                        <li>{{ $product->nama_222290 }}</li>
+                        <li>Produk Dummy</li>
                     </ul>
                 </div>
 
                 <div class="flex justify-between font-bold mt-4">
                     <span>Total:</span>
-                    <span>Rp {{ $product->harga_222290 }}</span>
+                    <span>Rp 100.000</span>
                 </div>
 
                 <form id="upload-receipt-form" enctype="multipart/form-data" class="mt-4">
@@ -108,7 +108,7 @@
                 <div class="flex justify-end mt-5">
                     <button onclick="closePaymentModal()"
                         class="bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded mr-2">Tutup</button>
-                    <button onclick="submitPaymentProof()"
+                    <button onclick="alert('Bukti pembayaran berhasil dikirim!')"
                         class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded">Kirim</button>
                 </div>
             </div>
@@ -125,63 +125,12 @@
         }
 
         function showPaymentModal() {
-            if (!isUserLoggedIn()) {
-                // Jika pengguna belum login, arahkan ke halaman login
-                window.location.href = "{{ route('login') }}";
-                return; // Hentikan eksekusi fungsi
-            }
-            document.getElementById('payment-modal').classList.remove('hidden');
+            toggleModal('payment-modal', true);
         }
 
         function closePaymentModal() {
-            document.getElementById('payment-modal').classList.add('hidden');
+            toggleModal('payment-modal', false);
         }
-
-        // Quantity Controls
-        document.querySelectorAll('.quantity-control').forEach(button => {
-            button.addEventListener('click', function() {
-                const qtyElement = document.getElementById('qty');
-                let qty = parseInt(qtyElement.innerText);
-                if (this.id === 'increment') qtyElement.innerText = ++qty;
-                else if (this.id === 'decrement' && qty > 1) qtyElement.innerText = --qty;
-            });
-        });
-
-        // Pengecekan login
-        function isUserLoggedIn() {
-            return {{ auth()->check() ? 'true' : 'false' }}; // Mengecek login di sisi server
-        }
-
-        // Add to Cart
-        document.getElementById('add-to-cart').addEventListener('click', function() {
-            if (!isUserLoggedIn()) {
-                window.location.href = "{{ route('login') }}";
-                return;
-            }
-
-            const qty = parseInt(document.getElementById('qty').value);
-            const productId = {{ $product->id_222290 }};
-
-            if (isNaN(qty) || qty < 1) {
-                alert('Quantity harus minimal 1.');
-                return;
-            }
-
-            fetch(`{{ route('cart.add', ':id') }}`.replace(':id', productId), {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                    },
-                    body: JSON.stringify({
-                        quantity: qty
-                    })
-                })
-                .then(response => response.json())
-                .then(() => document.getElementById('my_modal_3').showModal())
-                .catch(console.error);
-        });
-
 
         // Receipt Preview
         function previewReceipt() {
@@ -198,46 +147,6 @@
                 reader.readAsDataURL(receiptInput.files[0]);
             } else {
                 receiptPreview.classList.add('hidden');
-            }
-        }
-
-        // Submit Payment Proof
-        async function submitPaymentProof() {
-            if (!isUserLoggedIn()) {
-                // Jika pengguna belum login, arahkan ke halaman login
-                window.location.href = "{{ route('login') }}";
-                return; // Hentikan eksekusi fungsi
-            }
-
-            const formData = new FormData(document.getElementById('upload-receipt-form'));
-            const productId = {{ $product->id_222290 }};
-            const quantity = document.getElementById('qty').value;
-
-            formData.append('product_id', productId);
-            formData.append('quantity', quantity);
-
-            try {
-                const response = await fetch(`{{ route('checkout.single', ':productId') }}`.replace(':productId',
-                    productId), {
-                    method: 'POST',
-                    headers: {
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                    },
-                    body: formData,
-                });
-
-                if (response.ok) {
-                    alert('Payment proof submitted successfully!');
-                    toggleModal('payment-modal', false);
-                    window.location.reload();
-                } else {
-                    const errorData = await response.json();
-                    alert(`Failed to submit payment proof: ${errorData.message}`);
-                    window.location.reload();
-                }
-            } catch (error) {
-                console.error(error);
-                alert('Error submitting payment proof.');
             }
         }
     </script>

@@ -5,7 +5,7 @@
     <div class="container mx-auto pt-20">
         <h1 class="text-2xl font-semibold mb-4">Tambah Produk</h1>
 
-        <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
+        <form>
             @csrf
             <div class="mb-4">
                 <label for="nama_222290" class="block">Nama Produk</label>
@@ -26,14 +26,21 @@
                 <input type="number" name="jumlah_222290" id="jumlah_222290" class="border p-2 w-full   " required>
             </div>
             <div class="mb-4">
-                <label for="kategori_id_222290" class="block">Kategori</label>
-                <select name="kategori_id_222290" class="border p-2 w-full" required>
+                <label for="kategori_id_222290" class="block text-sm font-semibold">Kategori Skincare</label>
+                <select name="kategori_id_222290" class="border p-2 w-full rounded-lg" required>
                     <option value="">Pilih Kategori</option>
-                    @foreach ($categories as $category)
-                        <option value="{{ $category->id_222290 }}">{{ $category->nama_222290 }}</option>
-                    @endforeach
+                    <!-- Data dummy kategori skincare -->
+                    <option value="1">Pelembap</option>
+                    <option value="2">Pembersih</option>
+                    <option value="3">Toner</option>
+                    <option value="4">Serum</option>
+                    <option value="5">Masker Wajah</option>
+                    <option value="6">Sunscreen</option>
+                    <option value="7">Exfoliant</option>
+                    <option value="8">Eye Cream</option>
                 </select>
             </div>
+
 
             <div class="mb-4">
                 <label for="path_img_222290" class="block">Gambar Produk</label>

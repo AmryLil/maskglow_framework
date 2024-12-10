@@ -85,23 +85,54 @@
     </section>
 
     <!-- Bestsellers Section -->
-    <section class="py-12 bg-white px-32">
+    <section class="py-12 px-32">
         <div class="container mx-auto">
             <h2 class="text-center text-3xl font-semibold">Produk Terlaris</h2>
-            <h2 class="text-center text-xl font-light mb-6 mt-2 mx-52">Temukan produk terlaris kami yang telah menjadi
-                favorit pelanggan, memberikan hasil terbaik untuk kulit Anda!</h2>
+            <h2 class="text-center text-xl font-light mb-6 mt-2 mx-52">
+                Temukan produk terlaris kami yang telah menjadi favorit pelanggan, memberikan hasil terbaik untuk kulit
+                Anda!
+            </h2>
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                @if (!empty($products) && count($products) > 0)
-                    @foreach ($products as $product)
-                        <x-shop.card-product :path="route('product.show', $product->id_222290)" :title="$product->nama_222290" :price="number_format($product->harga_222290, 0, ',', '.') . ' IDR'" :image="Str::startsWith($product->path_img_222290, 'http')
-                            ? $product->path_img_222290
-                            : asset('storage/' . $product->path_img_222290)"
-                            class="w-8 h-full " />
-                    @endforeach
-                @else
-                    <p class="text-center col-span-full">No products available.</p>
-                @endif
-            </div>
+                @php
+                    // Data dummy produk
+                    $products = [
+                        [
+                            'id' => 1,
+                            'nama' => 'Brightening Serum',
+                            'harga' => 150000,
+                            'path_img' =>
+                                'https://images.unsplash.com/photo-1591135108731-615592cf231b?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8dG9uZXJ8ZW58MHx8MHx8fDA%3D',
+                        ],
+                        [
+                            'id' => 2,
+                            'nama' => 'Hydrating Cleanser',
+                            'harga' => 120000,
+                            'path_img' =>
+                                'https://images.unsplash.com/photo-1698906821397-b25264d46a83?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8c3Vuc2NyZWVufGVufDB8fDB8fHww',
+                        ],
+                        [
+                            'id' => 3,
+                            'nama' => 'UV Protection Sunscreen',
+                            'harga' => 180000,
+                            'path_img' =>
+                                'https://images.unsplash.com/photo-1561383621-d109918107aa?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGV5ZSUyMGNyZWFtfGVufDB8fDB8fHww',
+                        ],
+                        [
+                            'id' => 4,
+                            'nama' => 'Soothing Toner',
+                            'harga' => 100000,
+                            'path_img' =>
+                                'https://images.unsplash.com/photo-1585652757173-57de5e9fab42?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2VydW18ZW58MHx8MHx8fDA%3D',
+                        ],
+                    ];
+                @endphp
 
+                @foreach ($products as $product)
+                    <x-shop.card-product :path="route('product.show', $product['id'])" :title="$product['nama']" :price="number_format($product['harga'], 0, ',', '.') . ' IDR'" :image="$product['path_img']"
+                        class="w-8 h-full" />
+                @endforeach
+            </div>
+        </div>
     </section>
+
 @endsection
