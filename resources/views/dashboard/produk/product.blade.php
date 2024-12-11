@@ -1,6 +1,6 @@
 @extends('layouts.dashboard-layout')
 
-@section('title', $title)
+{{-- @section('title', $title) --}}
 
 @section('content')
     <!-- Dashboard Header -->
@@ -15,25 +15,6 @@
             </div>
         </div>
 
-        <!-- Filter Form -->
-        {{-- <div class="flex gap-2 justify-between w-full px-2">
-            <form method="GET" action="{{ route('dashboard.products.filter') }}" class="mb-4 w-full">
-                <select id="filter" name="filter" onchange="this.form.submit()" class="p-3 border rounded w-full">
-                    <option value="semua" {{ request('filter') == 'semua' ? 'selected' : '' }}>Semua</option>
-                    <option value="hari" {{ request('filter') == 'hari' ? 'selected' : '' }}>Hari Ini</option>
-                    <option value="minggu" {{ request('filter') == 'minggu' ? 'selected' : '' }}>Minggu Ini</option>
-                    <option value="bulan" {{ request('filter') == 'bulan' ? 'selected' : '' }}>Bulan Ini</option>
-                </select>
-            </form>
-
-            <!-- Download PDF Button -->
-            <a href="{{ route('dashboard.products.generatePdf', request('filter')) }}"
-                class="btn btn-outline h-1 bg-slate-50 text-slate-900">
-                Unduh PDF
-            </a>
-        </div> --}}
-
-        <!-- Product Table -->
         <div class="overflow-x-auto bg-slate-50 p-2">
             <table class="table-auto w-full text-left text-sm">
                 <thead class="font-bold text-base bg-gray-200">
@@ -59,7 +40,7 @@
                         <td class="px-4 py-2">
                             <ul class="flex gap-2">
                                 <li>
-                                    <a href="{{ route('products.edit', 1) }}" class="text-yellow-500">
+                                    <a href="#" class="text-yellow-500">
                                         Edit
                                     </a>
                                 </li>
@@ -82,7 +63,7 @@
                         <td class="px-4 py-2">
                             <ul class="flex gap-2">
                                 <li>
-                                    <a href="{{ route('products.edit', 2) }}" class="text-yellow-500">
+                                    <a href="#" class="text-yellow-500">
                                         Edit
                                     </a>
                                 </li>

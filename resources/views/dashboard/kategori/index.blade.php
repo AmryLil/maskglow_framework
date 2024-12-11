@@ -74,8 +74,7 @@
                             </td>
                             <td class="px-4 py-2 text-sm">
                                 <div class="flex gap-2">
-                                    <a href="{{ route('dashboard.category_products.edit', $category['id_222290']) }}"
-                                        class="text-blue-600 hover:text-blue-800">
+                                    <a href="#" class="text-blue-600 hover:text-blue-800">
                                         Edit
                                     </a>
 
