@@ -78,16 +78,10 @@
                                         class="text-blue-600 hover:text-blue-800">
                                         Edit
                                     </a>
-                                    <form
-                                        action="{{ route('dashboard.category_products.destroy', $category['id_222290']) }}"
-                                        method="POST"
-                                        onsubmit="return confirm('Apakah Anda yakin ingin menghapus kategori ini?');">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="text-red-600 hover:text-red-800">
-                                            Delete
-                                        </button>
-                                    </form>
+
+                                    <button type="submit" class="text-red-600 hover:text-red-800">
+                                        Delete
+                                    </button>
                                 </div>
                             </td>
                         </tr>

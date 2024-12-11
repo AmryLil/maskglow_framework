@@ -42,9 +42,6 @@ Route::get('/check-login', function () {
 Route::get('/cart', function () {
     return view('cart');
 });
-Route::post('/cart/add/{productId}', [CartController::class, 'addToCart'])->name('cart.add');
-Route::get('/cart/view', [CartController::class,             'showCart'])->name('cart.view');
-Route::delete('/cart/{productId}', [CartController::class,   'removeFromCart'])->name('cart.remove');
 
 // Route untuk transaksi
 Route::get('/transaksion', [TransaksiController::class,                     'index'])->name('transaksi.index');
@@ -60,19 +57,14 @@ Route::post('/logout', function () {
 })->name('logout');
 
 // Route pembayaran
-Route::get('/transaksi', [PaymentController::class,                    'index']);
-Route::get('/transaksi/{id}', [PaymentController::class,               'show']);
-Route::post('/transaksi', [PaymentController::class,                   'store']);
-Route::post('/submit-payment-proof', [PaymentController::class,        'store']);
-Route::post('/checkout/single/{productId}', [PaymentController::class, 'checkoutSingleProduct'])->name('checkout.single');
 
 // Route dashboard (tanpa middleware)
-Route::get('/dashboard', function () {
-    return view('dashboard.index', ['title' => 'Dashboard']);
-});
+// Route::get('/dashboard', function () {
+//     return view('dashboard.index', ['title' => 'Dashboard']);
+// });
 
 // Route produk
-Route::get('/dashboard/products/filter', [ProductController::class,      'filter'])->name('dashboard.products.filter');
+Route::get('/dashboard', [ProductController::class,                      'filter'])->name('dashboard.products.filter');
 Route::get('dashboard/products/pdf/{filter}', [ProductController::class, 'generatePdf'])->name('dashboard.products.generatePdf');
 Route::get('/dashboard/produk/create', [ProductController::class,        'create'])->name('products.add');
 Route::post('/dashboard/produk', [ProductController::class,              'store'])->name('products.store');
@@ -80,10 +72,6 @@ Route::get('/products/{id}', [ProductController::class,                  'show']
 Route::get('/dashboard/produk/{id}/edit', [ProductController::class,     'edit'])->name('products.edit');
 Route::put('/dashboard/produk/{id}', [ProductController::class,          'update'])->name('products.update');
 Route::delete('/dashboard/produk/{id}', [ProductController::class,       'destroy'])->name('products.destroy');
-
-// Route transaksi
-Route::put('/transaksi/{id}', [PaymentController::class,    'update']);
-Route::delete('/transaksi/{id}', [PaymentController::class, 'destroy'])->name('transaksi.destroy');
 
 // Route kategori produk di dashboard
 Route::get('/dashboard/kategori', [CategoryProductController::class,                     'kategori_dashboard'])->name('dashboard.kategori.index');

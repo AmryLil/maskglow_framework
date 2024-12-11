@@ -64,11 +64,10 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <form action="" method="POST" onsubmit="return confirmDelete();">
-                                        <button type="submit" class="text-red-500">
-                                            Hapus
-                                        </button>
-                                    </form>
+
+                                    <button type="submit" class="text-red-500">
+                                        Hapus
+                                    </button>
                                 </li>
                             </ul>
                         </td>
@@ -88,11 +87,10 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <form method="POST" onsubmit="return confirmDelete();">
-                                        <button type="submit" class="text-red-500">
-                                            Hapus
-                                        </button>
-                                    </form>
+
+                                    <button type="submit" class="text-red-500">
+                                        Hapus
+                                    </button>
                                 </li>
                             </ul>
                         </td>

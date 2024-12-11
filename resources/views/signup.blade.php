@@ -41,7 +41,7 @@
                 </div>
             @endif
 
-            <form action="{{ route('signup') }}" method="POST">
+            <form action="#" method="POST">
                 @csrf
                 <div class="flex flex-col text-sm rounded-md">
                     <input
@@ -59,8 +59,8 @@
                 </div>
 
                 <button
-                    class="mt-5 w-full border p-2 bg-indigo-700 text-white rounded-[4px] hover:bg-indigo-800 duration-300 font-bold"
-                    type="submit">Sign up</button>
+                    class="mt-5 w-full border p-2 bg-indigo-700 text-white rounded-[4px] hover:bg-indigo-800 duration-300 font-bold">Sign
+                    up</button>
             </form>
 
             <div class="flex justify-center mt-2 text-sm py-2 border rounded-sm gap-2">

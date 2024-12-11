@@ -41,7 +41,7 @@
                 </div>
             @endif
 
-            <form action="{{ route('login') }}" method="POST">
+            <form action="#" method="POST">
                 @csrf
                 <div class="flex flex-col text-sm rounded-md">
                     <input
@@ -52,8 +52,8 @@
                         type="password" name="password_222290" placeholder="Password" required />
                 </div>
                 <button
-                    class="mt-5 w-full border p-2 bg-indigo-700 text-white rounded-[4px] hover:bg-indigo-800 duration-300 font-bold"
-                    type="submit">Sign in</button>
+                    class="mt-5 w-full border p-2 bg-indigo-700 text-white rounded-[4px] hover:bg-indigo-800 duration-300 font-bold">Sign
+                    in</button>
             </form>
             <div class="mt-1 flex justify-between text-sm text-gray-900">
                 <a href="#">Forgot password?</a>
