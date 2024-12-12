@@ -24,6 +24,10 @@ Route::get('/shop', function () {
     return view(view: 'shop');
 })->name('shop');
 
+Route::get('/riwayat', function () {
+    return view(view: 'riwayat');
+})->name('riwayat');
+
 Route::view('/about', 'about_us')->name('about');
 
 // Route kategori produk
