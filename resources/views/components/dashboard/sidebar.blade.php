@@ -35,7 +35,7 @@
                         stroke-width="1"></path>
                     <path d="M8.75 10.625h3.75" stroke-width="1"></path>
                 </svg></x-dashboard.menulink> --}}
-            <x-dashboard.menulink path="{{ route('dashboard.products.filter') }}" title="Produk">
+            <x-dashboard.menulink path="{{ route('dashboard.products') }}" title="Produk">
                 <svg class="group-hover:stroke-black stroke-white" xmlns="http://www.w3.org/2000/svg"
                     viewBox="-0.5 -0.5 16 16" fill="none" stroke-linecap="round" stroke-linejoin="round"
                     id="List-Details--Streamline-Tabler" height="20" width="20">
