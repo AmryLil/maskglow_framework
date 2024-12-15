@@ -30,21 +30,21 @@ class CategoryProductController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama_222290'      => 'required|string|max:255',
-            'deskripsi_222290' => 'nullable|string',
-            'path_img_222290'  => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'nama'      => 'required|string|max:255',
+            'deskripsi' => 'nullable|string',
+            'path_img'  => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
         $fileName = null;
-        if ($request->hasFile('path_img_222290')) {
-            $image    = $request->file('path_img_222290');
+        if ($request->hasFile('path_img')) {
+            $image    = $request->file('path_img');
             $fileName = $image->store('images', 'public');
         }
 
         CategoryProduct::create([
-            'nama_222290'      => $request->nama_222290,
-            'deskripsi_222290' => $request->deskripsi_222290,
-            'path_img_222290'  => $fileName
+            'nama'      => $request->nama,
+            'deskripsi' => $request->deskripsi,
+            'path_img'  => $fileName
         ]);
 
         return redirect()->route('dashboard.kategori.index')->with('success', 'Kategori berhasil disimpan!');
@@ -65,25 +65,25 @@ class CategoryProductController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama_222290'      => 'required|string|max:255',
-            'deskripsi_222290' => 'nullable|string',
-            'path_img_222290'  => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'nama'      => 'required|string|max:255',
+            'deskripsi' => 'nullable|string',
+            'path_img'  => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
         $category = CategoryProduct::findOrFail($id);
 
-        if ($request->hasFile('path_img_222290')) {
-            if ($category->path_img_222290 && !filter_var($category->path_img_222290, FILTER_VALIDATE_URL)) {
-                if (Storage::exists('public/' . $category->path_img_222290)) {
-                    Storage::delete('public/' . $category->path_img_222290);
+        if ($request->hasFile('path_img')) {
+            if ($category->path_img && !filter_var($category->path_img, FILTER_VALIDATE_URL)) {
+                if (Storage::exists('public/' . $category->path_img)) {
+                    Storage::delete('public/' . $category->path_img);
                 }
             }
 
-            $path                      = $request->file('path_img_222290')->store('images', 'public');
-            $category->path_img_222290 = $path;
+            $path               = $request->file('path_img')->store('images', 'public');
+            $category->path_img = $path;
         }
-        $category->nama_222290      = $request->nama_222290;
-        $category->deskripsi_222290 = $request->deskripsi_222290;
+        $category->nama      = $request->nama;
+        $category->deskripsi = $request->deskripsi;
 
         $category->save();
 

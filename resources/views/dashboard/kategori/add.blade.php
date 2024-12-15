@@ -10,23 +10,23 @@
 
             <!-- Nama Kategori -->
             <div class="mb-5">
-                <label for="nama_222290" class="block text-gray-700 font-semibold mb-2">Nama Kategori</label>
-                <input type="text" name="nama_222290" id="nama_222290"
+                <label for="nama" class="block text-gray-700 font-semibold mb-2">Nama Kategori</label>
+                <input type="text" name="nama" id="nama"
                     class="border border-gray-300 p-3 rounded-lg w-full" placeholder="Masukkan nama kategori" required>
             </div>
 
 
             <!-- Deskripsi Kategori -->
             <div class="mb-5">
-                <label for="deskripsi_222290" class="block text-gray-700 font-semibold mb-2">Deskripsi</label>
-                <textarea name="deskripsi_222290" id="deskripsi_222290" class="border border-gray-300 p-3 rounded-lg w-full"
+                <label for="deskripsi" class="block text-gray-700 font-semibold mb-2">Deskripsi</label>
+                <textarea name="deskripsi" id="deskripsi" class="border border-gray-300 p-3 rounded-lg w-full"
                     placeholder="Deskripsi kategori (opsional)"></textarea>
             </div>
 
             <!-- Gambar Kategori -->
             <div class="mb-5">
-                <label for="path_img_222290" class="block text-gray-700 font-semibold mb-2">Gambar Kategori</label>
-                <input type="file" name="path_img_222290" id="path_img_222290"
+                <label for="path_img" class="block text-gray-700 font-semibold mb-2">Gambar Kategori</label>
+                <input type="file" name="path_img" id="path_img"
                     class="border border-gray-300 p-3 rounded-lg w-full">
             </div>
 

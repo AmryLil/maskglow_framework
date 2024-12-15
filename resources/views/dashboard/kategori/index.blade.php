@@ -31,13 +31,13 @@
                     @foreach ($categories as $index => $category)
                         <tr class="border-b hover:bg-gray-100 transition-all">
                             <th>{{ $index + 1 }}</th>
-                            <td>{{ $category->nama_222290 }}</td>
-                            <td>{{ Str::words($category->deskripsi_222290, 5, '...') }}</td>
+                            <td>{{ $category->nama }}</td>
+                            <td>{{ Str::words($category->deskripsi, 5, '...') }}</td>
                             <td>
-                                @if ($category->path_img_222290)
-                                    <img src="{{ Str::startsWith($category->path_img_222290, 'http')
-                                        ? $category->path_img_222290
-                                        : asset('storage/' . $category->path_img_222290) }}"
+                                @if ($category->path_img)
+                                    <img src="{{ Str::startsWith($category->path_img, 'http')
+                                        ? $category->path_img
+                                        : asset('storage/' . $category->path_img) }}"
                                         alt="Category Image" class="w-20 h-20 object-cover rounded-full">
                                 @else
                                     <span class="text-sm text-gray-500">Tidak ada gambar</span>
@@ -46,7 +46,7 @@
                             <td>
                                 <div class="flex gap-3">
                                     <!-- Edit Button -->
-                                    <a href="{{ route('dashboard.category_products.edit', $category->id_222290) }}"
+                                    <a href="{{ route('dashboard.category_products.edit', $category->id) }}"
                                         class="tooltip" data-tip="Edit">
                                         <button class="btn btn-warning p-2 rounded-lg">
                                             <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -69,7 +69,7 @@
                                     </a>
 
                                     <!-- Delete Button -->
-                                    <form action="{{ route('dashboard.category_products.destroy', $category->id_222290) }}"
+                                    <form action="{{ route('dashboard.category_products.destroy', $category->id) }}"
                                         method="POST"
                                         onsubmit="return confirm('Apakah Anda yakin ingin menghapus kategori ini?');">
                                         @csrf

@@ -46,13 +46,13 @@
                 <div class="flex flex-col text-sm rounded-md">
                     <input
                         class="mb-3 rounded-[4px] border p-3 hover:outline-none focus:outline-none hover:border-indigo-800"
-                        type="email" name="email_222290" placeholder="Email" value="{{ old('email') }}" required />
+                        type="email" name="email" placeholder="Email" value="{{ old('email') }}" required />
                     <input
                         class="mb-3 rounded-[4px] border p-3 hover:outline-none focus:outline-none hover:border-indigo-800"
-                        type="text" name="name_222290" placeholder="name" value="{{ old('name') }}" required />
+                        type="text" name="name" placeholder="name" value="{{ old('name') }}" required />
                     <input
                         class="mb-3 border rounded-[4px] p-3 hover:outline-none focus:outline-none hover:border-indigo-800"
-                        type="password" name="password_222290" placeholder="Password" required />
+                        type="password" name="password" placeholder="Password" required />
                     <input
                         class="border rounded-[4px] p-3 hover:outline-none focus:outline-none hover:border-indigo-800"
                         type="password" name="password_confirmation" placeholder="Confirm Password" required />

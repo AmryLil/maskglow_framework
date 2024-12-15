@@ -46,10 +46,10 @@
                 <div class="flex flex-col text-sm rounded-md">
                     <input
                         class="mb-5 rounded-[4px] border p-3 hover:outline-none focus:outline-none hover:border-indigo-800"
-                        type="text" name="email_222290" placeholder="Username or Email" required />
+                        type="text" name="email" placeholder="Username or Email" required />
                     <input
                         class="border rounded-[4px] p-3 hover:outline-none focus:outline-none hover:border-indigo-800"
-                        type="password" name="password_222290" placeholder="Password" required />
+                        type="password" name="password" placeholder="Password" required />
                 </div>
                 <button
                     class="mt-5 w-full border p-2 bg-indigo-700 text-white rounded-[4px] hover:bg-indigo-800 duration-300 font-bold">Sign

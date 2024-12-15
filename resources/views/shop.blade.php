@@ -75,9 +75,9 @@
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 ">
                 @if (!empty($productsLaris) && count($productsLaris) > 0)
                     @foreach ($productsLaris as $product)
-                        <x-shop.card-product :path="route('product.show', $product->id_222290)" :title="$product->nama_222290" :price="number_format($product->harga_222290, 0, ',', '.') . ' IDR'" :image="Str::startsWith($product->path_img_222290, 'http')
-                            ? $product->path_img_222290
-                            : asset('storage/' . $product->path_img_222290)"
+                        <x-shop.card-product :path="route('product.show', $product->id)" :title="$product->nama" :price="number_format($product->harga, 0, ',', '.') . ' IDR'" :image="Str::startsWith($product->path_img, 'http')
+                            ? $product->path_img
+                            : asset('storage/' . $product->path_img)"
                             class="w-6" />
                     @endforeach
                 @else
@@ -95,9 +95,9 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5 mt-5">
                 @if (!empty($products) && count($products) > 0)
                     @foreach ($products as $product)
-                        <x-shop.card-product :path="route('product.show', $product->id_222290)" :title="$product->nama_222290" :price="number_format($product->harga_222290, 0, ',', '.') . ' IDR'" :image="Str::startsWith($product->path_img_222290, 'http')
-                            ? $product->path_img_222290
-                            : asset('storage/' . $product->path_img_222290)"
+                        <x-shop.card-product :path="route('product.show', $product->id)" :title="$product->nama" :price="number_format($product->harga, 0, ',', '.') . ' IDR'" :image="Str::startsWith($product->path_img, 'http')
+                            ? $product->path_img
+                            : asset('storage/' . $product->path_img)"
                             class="w-6" />
                     @endforeach
                 @else

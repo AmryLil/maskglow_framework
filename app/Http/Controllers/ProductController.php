@@ -32,6 +32,7 @@ class ProductController extends Controller
         $products = Product::limit(4)->get();
         return view('index', compact('products'));
     }
+
     public function showProduct()
     {
         $products = Product::with('category')->get();
@@ -51,28 +52,28 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'nama_222290'        => 'required|string|max:255',
-            'deskripsi_222290'   => 'required|string',
-            'harga_222290'       => 'required|numeric',
-            'kategori_id_222290' => 'required|integer|exists:kategori_produk_222290,id_222290',
-            'path_img_222290'    => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'jumlah_222290'      => 'required|numeric',
+            'nama'        => 'required|string|max:255',
+            'deskripsi'   => 'required|string',
+            'harga'       => 'required|numeric',
+            'kategori_id' => 'required|numeric|exists:kategori_produk,id',
+            'path_img'    => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'jumlah'      => 'required|numeric',
         ]);
         $fileName = null;
-        if ($request->hasFile('path_img_222290')) {
-            $image = $request->file('path_img_222290');
+        if ($request->hasFile('path_img')) {
+            $image = $request->file('path_img');
 
             $fileName = $image->store('images', 'public');
         }
 
         $productData = [
-            'nama_222290'        => $request->nama_222290,
-            'deskripsi_222290'   => $request->deskripsi_222290,
-            'harga_222290'       => $request->harga_222290,
-            'kategori_id_222290' => $request->kategori_id_222290,
-            'jumlah_222290'      => $request->jumlah_222290,
-            'path_img_222290'    => $fileName,
-            'created_at'         => now(),
+            'nama'        => $request->nama,
+            'deskripsi'   => $request->deskripsi,
+            'harga'       => $request->harga,
+            'kategori_id' => $request->kategori_id,
+            'jumlah'      => $request->jumlah,
+            'path_img'    => $fileName,
+            'created_at'  => now(),
         ];
 
         try {
@@ -94,12 +95,12 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'nama_222290'        => 'required|string|max:255',
-            'deskripsi_222290'   => 'required|string',
-            'harga_222290'       => 'required|numeric',
-            'kategori_id_222290' => 'required|exists:kategori_produk_222290,id_222290',
-            'path_img_222290'    => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'jumlah_222290'      => 'required|numeric'
+            'nama'        => 'required|string|max:255',
+            'deskripsi'   => 'required|string',
+            'harga'       => 'required|numeric',
+            'kategori_id' => 'required|exists:kategori_produk,id',
+            'path_img'    => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'jumlah'      => 'required|numeric'
         ]);
 
         try {
@@ -109,22 +110,22 @@ class ProductController extends Controller
             return back()->withErrors('Produk tidak ditemukan.');
         }
 
-        if ($request->hasFile('path_img_222290')) {
+        if ($request->hasFile('path_img')) {
             // Hapus gambar lama jika ada
-            if ($product->path_img_222290 && Storage::exists('public/' . $product->path_img_222290)) {
-                Storage::delete('public/' . $product->path_img_222290);
+            if ($product->path_img && Storage::exists('public/' . $product->path_img)) {
+                Storage::delete('public/' . $product->path_img);
             }
 
             // Simpan gambar baru
-            $path                     = $request->file('path_img_222290')->store('images', 'public');
-            $product->path_img_222290 = $path;
+            $path              = $request->file('path_img')->store('images', 'public');
+            $product->path_img = $path;
         }
 
-        $product->nama_222290        = $validatedData['nama_222290'];
-        $product->deskripsi_222290   = $validatedData['deskripsi_222290'];
-        $product->harga_222290       = $validatedData['harga_222290'];
-        $product->kategori_id_222290 = $validatedData['kategori_id_222290'];
-        $product->jumlah_222290      = $validatedData['jumlah_222290'];
+        $product->nama        = $validatedData['nama'];
+        $product->deskripsi   = $validatedData['deskripsi'];
+        $product->harga       = $validatedData['harga'];
+        $product->kategori_id = $validatedData['kategori_id'];
+        $product->jumlah      = $validatedData['jumlah'];
 
         try {
             $product->save();

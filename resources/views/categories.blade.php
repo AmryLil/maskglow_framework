@@ -8,12 +8,12 @@
         @foreach ($categories as $category)
             <!-- Dynamic Category Cards -->
             @include('components.categories.card_category', [
-                'path' => route('categories.show', $category->id_222290),
-                'title' => $category->nama_222290,
-                'desc' => $category->deskripsi_222290,
-                'image' => Str::startsWith($category->path_img_222290, 'http')
-                    ? $category->path_img_222290
-                    : asset('storage/' . $category->path_img_222290),
+                'path' => route('categories.show', $category->id),
+                'title' => $category->nama,
+                'desc' => $category->deskripsi,
+                'image' => Str::startsWith($category->path_img, 'http')
+                    ? $category->path_img
+                    : asset('storage/' . $category->path_img),
             ])
         @endforeach
     </div>

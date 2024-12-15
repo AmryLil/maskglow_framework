@@ -12,87 +12,87 @@
         @endif
 
         <!-- Form Edit Produk -->
-        <form action="{{ route('products.update', $product->id_222290) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('products.update', $product->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
             <!-- Nama Produk -->
             <div class="mb-6">
-                <label for="nama_222290" class="block text-gray-700 font-semibold">Product Name</label>
-                <input type="text" name="nama_222290" id="nama_222290"
+                <label for="nama" class="block text-gray-700 font-semibold">Product Name</label>
+                <input type="text" name="nama" id="nama"
                     class="mt-1 w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    value="{{ old('nama_222290', $product->nama_222290) }}" required>
-                @error('nama_222290')
+                    value="{{ old('nama', $product->nama) }}" required>
+                @error('nama')
                     <small class="text-red-500">{{ $message }}</small>
                 @enderror
             </div>
 
             <!-- Deskripsi -->
             <div class="mb-6">
-                <label for="deskripsi_222290" class="block text-gray-700 font-semibold">Description</label>
-                <textarea name="deskripsi_222290" id="deskripsi_222290"
+                <label for="deskripsi" class="block text-gray-700 font-semibold">Description</label>
+                <textarea name="deskripsi" id="deskripsi"
                     class="mt-1 w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    rows="5" required>{{ old('deskripsi_222290', $product->deskripsi_222290) }}</textarea>
-                @error('deskripsi_222290')
+                    rows="5" required>{{ old('deskripsi', $product->deskripsi) }}</textarea>
+                @error('deskripsi')
                     <small class="text-red-500">{{ $message }}</small>
                 @enderror
             </div>
 
             <!-- Harga -->
             <div class="mb-6">
-                <label for="harga_222290" class="block text-gray-700 font-semibold">Price</label>
-                <input type="number" name="harga_222290" id="harga_222290"
+                <label for="harga" class="block text-gray-700 font-semibold">Price</label>
+                <input type="number" name="harga" id="harga"
                     class="mt-1 w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    value="{{ old('harga_222290', $product->harga_222290) }}" required>
-                @error('harga_222290')
+                    value="{{ old('harga', $product->harga) }}" required>
+                @error('harga')
                     <small class="text-red-500">{{ $message }}</small>
                 @enderror
             </div>
 
             <!-- Jumlah Produk -->
             <div class="mb-6">
-                <label for="jumlah_222290" class="block text-gray-700 font-semibold">Stock Quantity</label>
-                <input type="number" name="jumlah_222290" id="jumlah_222290"
+                <label for="jumlah" class="block text-gray-700 font-semibold">Stock Quantity</label>
+                <input type="number" name="jumlah" id="jumlah"
                     class="mt-1 w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    value="{{ old('jumlah_222290', $product->jumlah_222290) }}" required>
-                @error('jumlah_222290')
+                    value="{{ old('jumlah', $product->jumlah) }}" required>
+                @error('jumlah')
                     <small class="text-red-500">{{ $message }}</small>
                 @enderror
             </div>
 
             <!-- Kategori -->
             <div class="mb-6">
-                <label for="kategori_id_222290" class="block text-gray-700 font-semibold">Category</label>
-                <select name="kategori_id_222290" id="kategori_id_222290"
+                <label for="kategori_id" class="block text-gray-700 font-semibold">Category</label>
+                <select name="kategori_id" id="kategori_id"
                     class="mt-1 w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                     required>
                     <option value="">Select Category</option>
                     @foreach ($categories as $category)
-                        <option value="{{ $category->id_222290 }}"
-                            {{ old('kategori_id_222290', $product->kategori_id_222290) == $category->id_222290 ? 'selected' : '' }}>
-                            {{ $category->nama_222290 }}
+                        <option value="{{ $category->id }}"
+                            {{ old('kategori_id', $product->kategori_id) == $category->id ? 'selected' : '' }}>
+                            {{ $category->nama }}
                         </option>
                     @endforeach
                 </select>
-                @error('kategori_id_222290')
+                @error('kategori_id')
                     <small class="text-red-500">{{ $message }}</small>
                 @enderror
             </div>
 
             <!-- Gambar Produk -->
             <div class="mb-6">
-                <label for="path_img_222290" class="block text-gray-700 font-semibold">Product Image</label>
-                <input type="file" name="path_img_222290" id="path_img_222290"
+                <label for="path_img" class="block text-gray-700 font-semibold">Product Image</label>
+                <input type="file" name="path_img" id="path_img"
                     class="mt-1 w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
-                @if ($product->path_img_222290)
-                    <img src="{{ Str::startsWith($product->path_img_222290, 'http')
-                        ? $product->path_img_222290
-                        : asset('storage/' . $product->path_img_222290) }}"
+                @if ($product->path_img)
+                    <img src="{{ Str::startsWith($product->path_img, 'http')
+                        ? $product->path_img
+                        : asset('storage/' . $product->path_img) }}"
                         alt="Current Image" class="mt-2 h-32 rounded-lg shadow-md">
                 @else
                     <p class="text-gray-500 mt-2">No image available.</p>
                 @endif
-                @error('path_img_222290')
+                @error('path_img')
                     <small class="text-red-500">{{ $message }}</small>
                 @enderror
             </div>
