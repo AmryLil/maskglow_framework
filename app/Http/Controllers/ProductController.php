@@ -12,6 +12,26 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
+    public function index(Request $request)
+    {
+        // Mengambil semua produk dengan paginasi (15 per halaman)
+        $products = Product::paginate(15);
+
+        // Cek apakah request memiliki parameter 'page'
+        if ($request->has('page')) {
+            return view('list_product', compact('products'));
+        }
+
+        // Hanya mengambil produk terlaris jika halaman shop ditampilkan
+        $productsLaris = Product::skip(4)->take(4)->get();
+        return view('shop', compact('products', 'productsLaris'));
+    }
+
+    public function Best4Product(Request $request)
+    {
+        $products = Product::limit(4)->get();
+        return view('index', compact('products'));
+    }
     public function showProduct()
     {
         $products = Product::with('category')->get();

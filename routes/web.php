@@ -22,9 +22,11 @@ Route::get('/signup', function () {
 // Route untuk signup
 
 // Route untuk shop
-Route::get('/shop', function () {
-    return view(view: 'shop');
-})->name('shop');
+// Route::get('/shop', function () {
+//     return view(view: 'shop');
+// })->name('shop');
+
+Route::get('/shop', [ProductController::class, 'index'])->name('products.index');
 
 Route::get('/riwayat', function () {
     return view(view: 'riwayat');
@@ -33,9 +35,10 @@ Route::get('/riwayat', function () {
 Route::view('/about', 'about_us')->name('about');
 
 // Route kategori produk
-Route::get('/kategori', function () {
-    return view(view: 'categories');
-})->name('categories');
+// Route::get('/kategori', function () {
+//     return view(view: 'categories');
+// })->name('categories');
+Route::get('/kategori', [CategoryProductController::class, 'index'])->name('categories');
 Route::get('/kategori/{id}', function () {
     return view(view: 'productbycategory');
 })->name('categories.show');
