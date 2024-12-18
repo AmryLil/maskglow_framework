@@ -11,10 +11,9 @@
             <!-- Nama Kategori -->
             <div class="mb-5">
                 <label for="nama" class="block text-gray-700 font-semibold mb-2">Nama Kategori</label>
-                <input type="text" name="nama" id="nama"
-                    class="border border-gray-300 p-3 rounded-lg w-full" placeholder="Masukkan nama kategori" required>
+                <input type="text" name="nama" id="nama" class="border border-gray-300 p-3 rounded-lg w-full"
+                    placeholder="Masukkan nama kategori" required>
             </div>
-
 
             <!-- Deskripsi Kategori -->
             <div class="mb-5">
@@ -26,8 +25,7 @@
             <!-- Gambar Kategori -->
             <div class="mb-5">
                 <label for="path_img" class="block text-gray-700 font-semibold mb-2">Gambar Kategori</label>
-                <input type="file" name="path_img" id="path_img"
-                    class="border border-gray-300 p-3 rounded-lg w-full">
+                <input type="file" name="path_img" id="path_img" class="border border-gray-300 p-3 rounded-lg w-full">
             </div>
 
             <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold px-4 py-2 rounded-lg">Simpan

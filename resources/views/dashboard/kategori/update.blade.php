@@ -16,21 +16,21 @@
             </div>
 
             <div class="mb-4">
+
+
+
+
                 <label for="deskripsi" class="block text-sm font-medium text-gray-700">Deskripsi</label>
-                <textarea name="deskripsi" id="deskripsi" rows="4"
-                    class="mt-1 p-2 border border-gray-300 rounded w-full">{{ $category->deskripsi }}</textarea>
+                <textarea name="deskripsi" id="deskripsi" rows="4" class="mt-1 p-2 border border-gray-300 rounded w-full">{{ $category->deskripsi }}</textarea>
             </div>
 
             <div class="mb-4">
                 <label for="path_img" class="block text-sm font-medium text-gray-700">Gambar Kategori</label>
-                <input type="file" name="path_img" id="path_img"
-                    class="mt-1 p-2 border border-gray-300 rounded w-full">
+                <input type="file" name="path_img" id="path_img" class="mt-1 p-2 border border-gray-300 rounded w-full">
 
                 @if ($category->path_img)
                     <div class="mt-2">
-                        <img src="{{ Str::startsWith($category->path_img, 'http')
-                            ? $category->path_img
-                            : asset('storage/' . $category->path_img) }}"
+                        <img src="{{ Str::startsWith($category->path_img, 'http') ? $category->path_img : asset('storage/' . $category->path_img) }}"
                             alt="Gambar Kategori" class="h-32 w-32 object-cover border mt-2">
                     </div>
                     <p class="text-sm text-gray-500 mt-1">Gambar saat ini</p>
