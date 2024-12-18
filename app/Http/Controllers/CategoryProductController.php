@@ -6,6 +6,7 @@ use App\Models\CategoryProduct;  // Mengimpor model CategoryProduct
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
 class CategoryProductController extends Controller
@@ -29,24 +30,24 @@ class CategoryProductController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'nama'      => 'required|string|max:255',
-            'deskripsi' => 'nullable|string',
-            'path_img'  => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
-        ]);
-
         $fileName = null;
         if ($request->hasFile('path_img')) {
             $image    = $request->file('path_img');
             $fileName = $image->store('images', 'public');
         }
 
-        CategoryProduct::create([
-            'nama'      => $request->nama,
-            'deskripsi' => $request->deskripsi,
-            'path_img'  => $fileName
-        ]);
+        try {
+            CategoryProduct::create([
+                'nama'      => $request->input('nama'),
+                'deskripsi' => $request->input('deskripsi'),
+                'path_img'  => $fileName
+            ]);
+        } catch (\Exception $e) {
+            Log::error('Gagal menyimpan kategori:', ['error' => $e->getMessage()]);
+            abort(500, 'Gagal menyimpan kategori.');
+        }
 
+        // Redirect jika berhasil
         return redirect()->route('dashboard.kategori.index')->with('success', 'Kategori berhasil disimpan!');
     }
 
@@ -64,12 +65,6 @@ class CategoryProductController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'nama'      => 'required|string|max:255',
-            'deskripsi' => 'nullable|string',
-            'path_img'  => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
-        ]);
-
         $category = CategoryProduct::findOrFail($id);
 
         if ($request->hasFile('path_img')) {
@@ -82,11 +77,16 @@ class CategoryProductController extends Controller
             $path               = $request->file('path_img')->store('images', 'public');
             $category->path_img = $path;
         }
-        $category->nama      = $request->nama;
-        $category->deskripsi = $request->deskripsi;
+        try {
+            $category->nama      = $request->input('nama');
+            $category->deskripsi = $request->input('deskripsi');
+            $category->save();
+        } catch (\Exception $e) {
+            Log::error('Gagal menyimpan kategori:', ['error' => $e->getMessage()]);
+            abort(500, 'Gagal menyimpan kategori.');
+        }
 
-        $category->save();
-
+        // Redirect jika berhasil
         return redirect()->route('dashboard.kategori.index')->with('success', 'Kategori berhasil diperbarui!');
     }
 

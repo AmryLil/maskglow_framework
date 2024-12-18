@@ -51,14 +51,6 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'nama'        => 'required|string|max:255',
-            'deskripsi'   => 'required|string',
-            'harga'       => 'required|numeric',
-            'kategori_id' => 'required|numeric|exists:kategori_produk,id',
-            'path_img'    => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'jumlah'      => 'required|numeric',
-        ]);
         $fileName = null;
         if ($request->hasFile('path_img')) {
             $image = $request->file('path_img');
@@ -80,6 +72,7 @@ class ProductController extends Controller
             Product::create($productData);
         } catch (\Exception $e) {
             Log::error('Gagal menyimpan produk:', ['error' => $e->getMessage()]);
+            abort(500, 'Gagal menyimpan produk.');
             return back()->withErrors('Gagal menyimpan produk. Silakan coba lagi.');
         }
         return redirect()->route('dashboard.products')->with('success', 'Produk berhasil disimpan!');
@@ -94,15 +87,6 @@ class ProductController extends Controller
 
     public function update(Request $request, $id)
     {
-        $validatedData = $request->validate([
-            'nama'        => 'required|string|max:255',
-            'deskripsi'   => 'required|string',
-            'harga'       => 'required|numeric',
-            'kategori_id' => 'required|exists:kategori_produk,id',
-            'path_img'    => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'jumlah'      => 'required|numeric'
-        ]);
-
         try {
             $product = Product::findOrFail($id);
         } catch (\Exception $e) {
@@ -121,19 +105,22 @@ class ProductController extends Controller
             $product->path_img = $path;
         }
 
-        $product->nama        = $validatedData['nama'];
-        $product->deskripsi   = $validatedData['deskripsi'];
-        $product->harga       = $validatedData['harga'];
-        $product->kategori_id = $validatedData['kategori_id'];
-        $product->jumlah      = $validatedData['jumlah'];
+        $product->nama        = $request->input('nama');
+        $product->deskripsi   = $request->input('deskripsi');
+        $product->harga       = $request->input('harga');
+        $product->kategori_id = $request->input('kategori_id');
+        $product->jumlah      = $request->input('jumlah');
 
         try {
             $product->save();
             Log::info('Produk berhasil diperbarui:', $product->toArray());
         } catch (\Exception $e) {
             Log::error('Gagal menyimpan produk:', ['error' => $e->getMessage()]);
+            abort(500, 'Gagal menyimpan produk.');
+
             return back()->withErrors('Gagal menyimpan produk. Silakan coba lagi.');
         }
+
         // Redirect setelah berhasil
         return redirect()->route('dashboard.products', ['filter' => 'semua'])->with('success', 'Produk berhasil diperbarui.');
     }

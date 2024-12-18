@@ -21,7 +21,7 @@
                 <label for="nama" class="block text-gray-700 font-semibold">Product Name</label>
                 <input type="text" name="nama" id="nama"
                     class="mt-1 w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    value="{{ old('nama', $product->nama) }}" required>
+                    value="{{ old('nama', $product->nama) }}">
                 @error('nama')
                     <small class="text-red-500">{{ $message }}</small>
                 @enderror
@@ -32,7 +32,7 @@
                 <label for="deskripsi" class="block text-gray-700 font-semibold">Description</label>
                 <textarea name="deskripsi" id="deskripsi"
                     class="mt-1 w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    rows="5" required>{{ old('deskripsi', $product->deskripsi) }}</textarea>
+                    rows="5">{{ old('deskripsi', $product->deskripsi) }}</textarea>
                 @error('deskripsi')
                     <small class="text-red-500">{{ $message }}</small>
                 @enderror
@@ -43,7 +43,7 @@
                 <label for="harga" class="block text-gray-700 font-semibold">Price</label>
                 <input type="number" name="harga" id="harga"
                     class="mt-1 w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    value="{{ old('harga', $product->harga) }}" required>
+                    value="{{ old('harga', $product->harga) }}">
                 @error('harga')
                     <small class="text-red-500">{{ $message }}</small>
                 @enderror
@@ -54,7 +54,7 @@
                 <label for="jumlah" class="block text-gray-700 font-semibold">Stock Quantity</label>
                 <input type="number" name="jumlah" id="jumlah"
                     class="mt-1 w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    value="{{ old('jumlah', $product->jumlah) }}" required>
+                    value="{{ old('jumlah', $product->jumlah) }}">
                 @error('jumlah')
                     <small class="text-red-500">{{ $message }}</small>
                 @enderror
@@ -64,8 +64,7 @@
             <div class="mb-6">
                 <label for="kategori_id" class="block text-gray-700 font-semibold">Category</label>
                 <select name="kategori_id" id="kategori_id"
-                    class="mt-1 w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    required>
+                    class="mt-1 w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
                     <option value="">Select Category</option>
                     @foreach ($categories as $category)
                         <option value="{{ $category->id }}"
@@ -85,9 +84,7 @@
                 <input type="file" name="path_img" id="path_img"
                     class="mt-1 w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
                 @if ($product->path_img)
-                    <img src="{{ Str::startsWith($product->path_img, 'http')
-                        ? $product->path_img
-                        : asset('storage/' . $product->path_img) }}"
+                    <img src="{{ Str::startsWith($product->path_img, 'http') ? $product->path_img : asset('storage/' . $product->path_img) }}"
                         alt="Current Image" class="mt-2 h-32 rounded-lg shadow-md">
                 @else
                     <p class="text-gray-500 mt-2">No image available.</p>
