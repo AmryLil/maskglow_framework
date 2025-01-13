@@ -350,8 +350,8 @@ class ComposerStaticInit210157f863fbb4aa3143a7ea4424cf96
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -545,16 +545,8 @@ class ComposerStaticInit210157f863fbb4aa3143a7ea4424cf96
     );
 
     public static $classMap = array (
-        'App\\Http\\Controllers\\CartController' => __DIR__ . '/../..' . '/app/Http/Controllers/CartController.php',
         'App\\Http\\Controllers\\CategoryProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/CategoryProductController.php',
-        'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
-        'App\\Http\\Controllers\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/LoginController.php',
-        'App\\Http\\Controllers\\NavbarController' => __DIR__ . '/../..' . '/app/Http/Controllers/NavbarController.php',
-        'App\\Http\\Controllers\\PaymentController' => __DIR__ . '/../..' . '/app/Http/Controllers/PaymentController.php',
         'App\\Http\\Controllers\\ProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProductController.php',
-        'App\\Http\\Controllers\\ProductDetailsController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProductDetailsController.php',
-        'App\\Http\\Controllers\\TransaksiController' => __DIR__ . '/../..' . '/app/Http/Controllers/TransaksiController.php',
-        'App\\Http\\Controllers\\signupController' => __DIR__ . '/../..' . '/app/Http/Controllers/signupController.php',
         'App\\Http\\Middleware\\CheckUserAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckUserAuthenticated.php',
         'App\\Http\\Middleware\\RoleMiddleware' => __DIR__ . '/../..' . '/app/Http/Middleware/RoleMiddleware.php',
         'App\\Models\\Cart' => __DIR__ . '/../..' . '/app/Models/Cart.php',
@@ -1345,6 +1337,8 @@ class ComposerStaticInit210157f863fbb4aa3143a7ea4424cf96
         'Database\\Factories\\UserFactory' => __DIR__ . '/../..' . '/database/factories/UserFactory.php',
         'Database\\Seeders\\AdminSeeder' => __DIR__ . '/../..' . '/database/seeders/AdminSeeder.php',
         'Database\\Seeders\\DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/DatabaseSeeder.php',
+        'Database\\Seeders\\KategoriSeeder' => __DIR__ . '/../..' . '/database/seeders/KategoriSeeder.php',
+        'Database\\Seeders\\ProdukSeeder' => __DIR__ . '/../..' . '/database/seeders/ProdukSeeder.php',
         'DateError' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateError.php',
         'DateException' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateException.php',
         'DateInvalidOperationException' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateInvalidOperationException.php',

@@ -51,31 +51,39 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        $fileName = null;
-        if ($request->hasFile('path_img')) {
-            $image = $request->file('path_img');
-
-            $fileName = $image->store('images', 'public');
-        }
-
-        $productData = [
-            'nama'        => $request->nama,
-            'deskripsi'   => $request->deskripsi,
-            'harga'       => $request->harga,
-            'kategori_id' => $request->kategori_id,
-            'jumlah'      => $request->jumlah,
-            'path_img'    => $fileName,
-            'created_at'  => now(),
-        ];
-
         try {
+            // Validasi form
+            $validated = $request->validate([
+                'nama'        => 'required|string|max:255',
+                'deskripsi'   => 'required|string',
+                'harga'       => 'required|numeric',
+                'kategori_id' => 'required|exists:category_products,id',
+                'jumlah'      => 'required|integer',
+                'path_img'    => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            ]);
+
+            $fileName = null;
+            if ($request->hasFile('path_img')) {
+                $image    = $request->file('path_img');
+                $fileName = $image->store('images', 'public');
+            }
+
+            // Menggabungkan data produk dengan gambar (jika ada)
+            $productData = array_merge($validated, [
+                'path_img'   => $fileName,
+                'created_at' => now(),
+            ]);
+
             Product::create($productData);
+
+            return redirect()->route('dashboard.products')->with('success', 'Produk berhasil disimpan!');
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            abort(500, 'Data tidak valid: ' . implode(', ', $e->errors()));
         } catch (\Exception $e) {
+            // Tangani error lainnya
             Log::error('Gagal menyimpan produk:', ['error' => $e->getMessage()]);
-            abort(500, 'Gagal menyimpan produk.');
-            return back()->withErrors('Gagal menyimpan produk. Silakan coba lagi.');
+            abort(500, 'Terjadi kesalahan: ' . $e->getMessage());
         }
-        return redirect()->route('dashboard.products')->with('success', 'Produk berhasil disimpan!');
     }
 
     public function edit($id)

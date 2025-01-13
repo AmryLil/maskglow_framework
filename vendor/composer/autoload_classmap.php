@@ -6,16 +6,8 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'App\\Http\\Controllers\\CartController' => $baseDir . '/app/Http/Controllers/CartController.php',
     'App\\Http\\Controllers\\CategoryProductController' => $baseDir . '/app/Http/Controllers/CategoryProductController.php',
-    'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
-    'App\\Http\\Controllers\\LoginController' => $baseDir . '/app/Http/Controllers/LoginController.php',
-    'App\\Http\\Controllers\\NavbarController' => $baseDir . '/app/Http/Controllers/NavbarController.php',
-    'App\\Http\\Controllers\\PaymentController' => $baseDir . '/app/Http/Controllers/PaymentController.php',
     'App\\Http\\Controllers\\ProductController' => $baseDir . '/app/Http/Controllers/ProductController.php',
-    'App\\Http\\Controllers\\ProductDetailsController' => $baseDir . '/app/Http/Controllers/ProductDetailsController.php',
-    'App\\Http\\Controllers\\TransaksiController' => $baseDir . '/app/Http/Controllers/TransaksiController.php',
-    'App\\Http\\Controllers\\signupController' => $baseDir . '/app/Http/Controllers/signupController.php',
     'App\\Http\\Middleware\\CheckUserAuthenticated' => $baseDir . '/app/Http/Middleware/CheckUserAuthenticated.php',
     'App\\Http\\Middleware\\RoleMiddleware' => $baseDir . '/app/Http/Middleware/RoleMiddleware.php',
     'App\\Models\\Cart' => $baseDir . '/app/Models/Cart.php',
@@ -806,6 +798,8 @@ return array(
     'Database\\Factories\\UserFactory' => $baseDir . '/database/factories/UserFactory.php',
     'Database\\Seeders\\AdminSeeder' => $baseDir . '/database/seeders/AdminSeeder.php',
     'Database\\Seeders\\DatabaseSeeder' => $baseDir . '/database/seeders/DatabaseSeeder.php',
+    'Database\\Seeders\\KategoriSeeder' => $baseDir . '/database/seeders/KategoriSeeder.php',
+    'Database\\Seeders\\ProdukSeeder' => $baseDir . '/database/seeders/ProdukSeeder.php',
     'DateError' => $vendorDir . '/symfony/polyfill-php83/Resources/stubs/DateError.php',
     'DateException' => $vendorDir . '/symfony/polyfill-php83/Resources/stubs/DateException.php',
     'DateInvalidOperationException' => $vendorDir . '/symfony/polyfill-php83/Resources/stubs/DateInvalidOperationException.php',
